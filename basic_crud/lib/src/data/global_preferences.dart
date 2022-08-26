@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class GlobalPreferences {
   
-  static final GlobalPreferences _instancia = GlobalPreferences._internal(); 
+  static final GlobalPreferences _instancia = GlobalPreferences._internal();
   factory GlobalPreferences() {
     return _instancia;
   }
@@ -24,4 +24,9 @@ class GlobalPreferences {
   // LOGIN
   bool get isSession => _globalPreferences.getBool('isSession') ?? false;
   set isSession(bool value) => _globalPreferences.setBool('isSession', value);
-} 
+
+  /// TOKEN DEVICE DEL DISPOSITIVO
+  String? get tokenDevice => _globalPreferences.getString('tokenDevice');
+  set tokenDevice(String? value) => _globalPreferences.setString('tokenDevice', value ?? '');
+
+}
