@@ -1,8 +1,8 @@
 
 import 'package:basic_crud/src/data/global_preferences.dart';
-import 'package:basic_crud/src/models/employees_model.dart';
+import 'package:basic_crud/src/models/api/employees_model.dart';
 import 'package:basic_crud/src/services/employees_services.dart';
-import 'package:basic_crud/src/widgets/alerts/alert_logout.dart';
+import 'package:basic_crud/src/widgets/alerts/alert_delete_user.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:basic_crud/src/utils/utils.dart' as utils;
 import 'package:get/route_manager.dart';
@@ -51,19 +51,5 @@ class EmployeesController extends GetxController {
     update(['list-employees']);
     await gxGetEmployees();
   }
-
-  //==========================================================
-  /// MUESTRA ALERTA DE CIERRE DE SESIÓN
-  //==========================================================
-  Future<void> showAlertLogOut() async{
-    utils.msginfo('--> Cerrando sesión...');
-    Get.dialog( AlertLogOut(
-      fnDone: () {
-        _globalPreferences.isSession = false;
-        Get.offAllNamed('/user_page');
-      },
-      fnCancel: () => Get.back()
-    ));
-  }  
 
 }

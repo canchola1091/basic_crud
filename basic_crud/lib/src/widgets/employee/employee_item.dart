@@ -1,7 +1,7 @@
 
-import 'package:basic_crud/src/models/employees_model.dart';
+import 'package:basic_crud/src/models/api/employees_model.dart';
 import 'package:flutter/material.dart';
-import 'package:basic_crud/src/pages/detail_employee_page.dart';
+import 'package:basic_crud/src/pages/api/detail_employee_page.dart';
 import 'package:basic_crud/src/widgets/text/custom_text.dart';
 import 'package:basic_crud/src/theme/theme.dart' as th;
 import 'package:flutter_multi_formatter/formatters/formatter_utils.dart';

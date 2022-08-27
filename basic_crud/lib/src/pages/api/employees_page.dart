@@ -1,5 +1,5 @@
 
-import 'package:basic_crud/src/controllers/employees_controller.dart';
+import 'package:basic_crud/src/controllers/api/employees_controller.dart';
 import 'package:basic_crud/src/widgets/buttons/custom_button.dart';
 import 'package:basic_crud/src/widgets/text/custom_text.dart';
 import 'package:basic_crud/src/widgets/employee/employee_item.dart';
@@ -23,13 +23,7 @@ class EmployeesPage extends StatelessWidget {
           title: const CustomText(
             fTxt: 'Employee List',
             fSize: 20.0
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.exit_to_app),
-              onPressed: _.showAlertLogOut
-            )
-          ]
+          )
         ),
         body: _listEmployees()
       )

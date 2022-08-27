@@ -1,11 +1,11 @@
 
-import 'package:basic_crud/src/models/employees_model.dart';
+import 'package:basic_crud/src/models/api/employees_model.dart';
 import 'package:basic_crud/src/widgets/alerts/simple_alert.dart';
 import 'package:http/http.dart' as http;
 import 'package:basic_crud/src/utils/utils.dart' as utils;
 
 class EmployeesServices {
-  
+
   //==========================================================
   /// OBTENER LISTA DE EMPLEADOS
   //==========================================================

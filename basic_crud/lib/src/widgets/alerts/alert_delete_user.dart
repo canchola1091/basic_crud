@@ -8,16 +8,16 @@ import 'package:basic_crud/src/widgets/buttons/custom_button.dart';
 import 'package:basic_crud/src/widgets/text/custom_text.dart';
 
 
-class AlertLogOut extends StatelessWidget {
+class AlertDeleteUser extends StatelessWidget {
 
   final void Function() fnDone;   // Fucnión para botón de 'ACEPTAR'
   final void Function() fnCancel; // Función para botón de 'ATRAS/CANCELAR'
 
-  const AlertLogOut({
+  const AlertDeleteUser({
     Key? key,
     required this.fnDone,
     required this.fnCancel,
-  }) : super(key: key);
+  }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class AlertLogOut extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomText(
-                  fTxt: '¿Cerrar sesión?',
+                  fTxt: '¿Borrar usuario?',
                   fSize: 18.0,
                   fColor: th.primaryColor,
                 ),
@@ -52,10 +52,10 @@ class AlertLogOut extends StatelessWidget {
                       bgColor: Colors.white,
                       borderColor: th.primaryColor,
                       childWidget: CustomText(
-                        fTxt: 'ATRÁS',
+                        fTxt: 'CANCELAR',
                         fSize: 15.0,
                         fColor: th.primaryColor,
-                      ), 
+                      ),
                       btnFunction: fnCancel
                     ),
                     CustomButton(
@@ -65,16 +65,16 @@ class AlertLogOut extends StatelessWidget {
                         fTxt: 'ACEPTAR',
                         fSize: 15.0,
                         fColor: Colors.white,
-                      ), 
+                      ),
                       btnFunction: fnDone
                     ),
                   ]
                 )
               ]
             )
-          ) 
+          )
         )
-      ),
+      )
     );
   }
 }

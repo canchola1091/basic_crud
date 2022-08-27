@@ -20,7 +20,7 @@ class HomeController extends GetxController {
   //==========================================================
   /// NAVEGA HACIA LA VISTA DE CRUD FIRESTORE
   //==========================================================
-  void goToCrudFirestore () => Get.toNamed('/crud_page');
+  void goToCrudFirestore () => Get.toNamed('/users_page');
 
   //************************************************************
 
