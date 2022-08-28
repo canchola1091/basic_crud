@@ -3,6 +3,7 @@ import 'package:basic_crud/src/data/global_preferences.dart';
 import 'package:basic_crud/src/models/api/employees_model.dart';
 import 'package:basic_crud/src/services/employees_services.dart';
 import 'package:basic_crud/src/widgets/alerts/alert_delete_user.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:basic_crud/src/utils/utils.dart' as utils;
 import 'package:get/route_manager.dart';
@@ -50,6 +51,26 @@ class EmployeesController extends GetxController {
     _hasError = false;
     update(['list-employees']);
     await gxGetEmployees();
+  }
+
+  List<PieChartSectionData> temp() {
+
+    List<PieChartSectionData> listSection = [];
+
+    for (var item in _employeesModel!.data) {
+      listSection.add(
+        PieChartSectionData(
+          value: double.tryParse(item.employeeSalary.toString()),
+          titlePositionPercentageOffset: 1.5
+        )
+      );
+    }
+
+    // print(_employeesModel!.data);
+    // print(listSection);
+
+    return listSection;
+
   }
 
 }
