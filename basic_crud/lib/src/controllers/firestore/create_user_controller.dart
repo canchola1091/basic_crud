@@ -24,6 +24,7 @@ class CreateUserController extends GetxController {
   TextEditingController get gxPhoneCtrl => _phoneUserCtrl;
   bool get gxisUserEdit => _isUserEdit;
 
+  //*********************ESTADOS*************************
   @override
   void onInit() {
     super.onInit();
@@ -37,38 +38,46 @@ class CreateUserController extends GetxController {
       _phoneUserCtrl.text  = _userModel.phone;
     }
   }
+  //*******************************************************
 
+
+  //==========================================================
+  /// CREA O EDITA UN USUARIO EXISTENTE
+  //==========================================================
   Future<void> createOrEditUser() async{
 
+    final bool _formValid = _formKey.currentState!.validate();
     late DocumentReference<Map<String, dynamic>> _docUser;
 
-    if(_isUserEdit) {
-      _docUser = FirebaseFirestore.instance.collection('users').doc(_iduserToEdit);
-    }else {
-      _docUser = FirebaseFirestore.instance.collection('users').doc();
+    if(_formValid) {
+      if(_isUserEdit) {
+        _docUser = FirebaseFirestore.instance.collection('users').doc(_iduserToEdit);
+      }else {
+        _docUser = FirebaseFirestore.instance.collection('users').doc();
+      }
+
+      final UserModel _user = UserModel(
+        id: _docUser.id,
+        name: _nameUserCtrl.text.trim(),
+        age: int.parse(_ageUserCtrl.text.trim()),
+        email: _emailUserCtrl.text.trim(),
+        phone: _phoneUserCtrl.text.trim()
+      );
+
+      final json = _user.toJson();
+
+      if(_isUserEdit) {
+        _docUser.update(json);
+      }else {
+        await _docUser.set(json);
+      }
+
+      Get.back();
+      SnackBarAlert.cSnackBar(
+        Icons.check,
+        (_isUserEdit) ? 'Usuario actualizado' : 'Usuario agregago'
+      );
     }
-
-    final UserModel _user = UserModel(
-      id: _docUser.id,
-      name: _nameUserCtrl.text.trim(),
-      age: int.parse(_ageUserCtrl.text.trim()),
-      email: _emailUserCtrl.text.trim(),
-      phone: _phoneUserCtrl.text.trim()
-    );
-
-    final json = _user.toJson();
-
-    if(_isUserEdit) {
-      _docUser.update(json);
-    }else {
-      await _docUser.set(json);
-    }
-
-    Get.back();
-    SnackBarAlert.cSnackBar(
-      Icons.check,
-      (_isUserEdit) ? 'Usuario actualizado' : 'Usuario agregago'
-    );
 
   }
 

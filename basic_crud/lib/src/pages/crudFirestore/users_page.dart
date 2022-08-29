@@ -1,5 +1,6 @@
 
 
+import 'package:animate_do/animate_do.dart';
 import 'package:basic_crud/src/controllers/firestore/users_controller.dart';
 import 'package:basic_crud/src/models/firestore/user_model.dart';
 import 'package:basic_crud/src/pages/crudFirestore/detail_user.dart';
@@ -63,18 +64,21 @@ class UsersPage extends StatelessWidget {
 
   Widget _itemUser(UserModel userModel) {
     return GetBuilder<UsersController>(
-      builder: (_) => ListTile(
-        leading: IconButton(
-          icon: const Icon(Icons.edit),
-          onPressed: () => _.goToEditUser(userModel)
-        ),
-        title: CustomText(fTxt: userModel.name, fSize: 17.0),
-        subtitle: CustomText(fTxt: userModel.email, fSize: 16.0),
-        trailing: IconButton(
-          icon: const Icon(Icons.delete, color: Colors.red),
-          onPressed: () => _.showAlertDeleteUser(userModel.id)
-        ),
-        onTap: () => Get.to( () => DetailUserPage(user: userModel))
+      builder: (_) => FadeIn(
+        delay: const Duration(milliseconds: 300),
+        child: ListTile(
+          leading: IconButton(
+            icon: const Icon(Icons.edit),
+            onPressed: () => _.goToEditUser(userModel)
+          ),
+          title: CustomText(fTxt: userModel.name, fSize: 17.0),
+          subtitle: CustomText(fTxt: userModel.email, fSize: 16.0),
+          trailing: IconButton(
+            icon: const Icon(Icons.delete, color: Colors.red),
+            onPressed: () => _.showAlertDeleteUser(userModel.id)
+          ),
+          onTap: () => Get.to( () => DetailUserPage(user: userModel))
+        )
       )
     );
   }

@@ -1,4 +1,5 @@
 
+import 'package:animate_do/animate_do.dart';
 import 'package:basic_crud/src/controllers/api/employees_controller.dart';
 import 'package:basic_crud/src/pages/api/chart_page.dart';
 import 'package:basic_crud/src/widgets/buttons/custom_button.dart';
@@ -48,9 +49,12 @@ class EmployeesPage extends StatelessWidget {
         itemCount: _.gxEmployeedModel!.data.length,
         separatorBuilder: (__, int i) => const SizedBox(height: 20),
         itemBuilder: (__, int index) {
-          return ItemEmployee(
-            employeesModel: _.gxEmployeedModel,
-            index: index,
+          return FadeIn(
+            delay: const Duration(milliseconds: 300),
+            child: ItemEmployee(
+              employeesModel: _.gxEmployeedModel,
+              index: index,
+            ),
           );
         }
       )

@@ -7,6 +7,9 @@ import 'package:get/route_manager.dart';
 
 class UsersController extends GetxController {
 
+  //==========================================================
+  /// OBTIENE LA LISTA DE USUARIOS
+  //==========================================================
   Stream<List<UserModel>> readUsers() {
     return FirebaseFirestore.instance
       .collection('users')
@@ -14,6 +17,9 @@ class UsersController extends GetxController {
     );
   }
 
+  //==========================================================
+  /// ELIMINA AL UN USUARIO EN ESPECIFICO
+  //==========================================================
   Future<void> _deleteUser(String idUser) async{
     final _docUser = FirebaseFirestore.instance.collection('users').doc(idUser);
 
@@ -21,6 +27,9 @@ class UsersController extends GetxController {
     Get.back();
   }
 
+  //==========================================================
+  /// MUESTRA UN ALERT PARA CONFIRMAR ELIMINAR UN USUARIO
+  //==========================================================
   void showAlertDeleteUser(String idUser) {
     Get.dialog(
       AlertDeleteUser(
@@ -31,8 +40,15 @@ class UsersController extends GetxController {
     );
   }
 
+  //****************NAVEGACIONES********************************
+  //==========================================================
+  /// NAVEGA HACIA LA VISTA DE CREAR USUARIO
+  //==========================================================
   void goToCreateUser() => Get.toNamed('/create_user_page', arguments: {"isEdit": false});
 
+  //==========================================================
+  /// NAVEGA HACIA LA VISTA DE EDITAR USUARIO
+  //==========================================================
   void goToEditUser(UserModel userModel) {
     Get.toNamed('/create_user_page', arguments: {
         "isEdit": true,
@@ -40,5 +56,6 @@ class UsersController extends GetxController {
       }
     );
   }
+  //************************************************************
 
 }

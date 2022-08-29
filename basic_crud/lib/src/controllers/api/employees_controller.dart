@@ -2,11 +2,8 @@
 import 'package:basic_crud/src/data/global_preferences.dart';
 import 'package:basic_crud/src/models/api/employees_model.dart';
 import 'package:basic_crud/src/services/employees_services.dart';
-import 'package:basic_crud/src/widgets/alerts/alert_delete_user.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:basic_crud/src/utils/utils.dart' as utils;
-import 'package:get/route_manager.dart';
 
 class EmployeesController extends GetxController {
 
@@ -21,6 +18,7 @@ class EmployeesController extends GetxController {
   bool get gxLoadingEmployees               => _loadingEmployees;
   bool get gxHasError                       => _hasError;
 
+  //*********************ESTADOS*************************
   @override
   void onInit() {
     super.onInit();
@@ -32,6 +30,8 @@ class EmployeesController extends GetxController {
     super.onReady();
     await gxGetEmployees();
   }
+  //*******************************************************
+
 
   //==========================================================
   /// CONSUME ENDPOINT DE LISTA DE EMPLEADOS
@@ -53,21 +53,21 @@ class EmployeesController extends GetxController {
     await gxGetEmployees();
   }
 
-  List<PieChartSectionData> temp() {
+  //==========================================================
+  /// CREA LAS SECCIONES DE LA GRAFICA
+  //==========================================================
+  List<PieChartSectionData> buildSectionChart() {
 
     List<PieChartSectionData> listSection = [];
 
     for (var item in _employeesModel!.data) {
       listSection.add(
         PieChartSectionData(
-          value: double.tryParse(item.employeeSalary.toString()),
+          value: double.tryParse(item.employeeAge.toString()),
           titlePositionPercentageOffset: 1.5
         )
       );
     }
-
-    // print(_employeesModel!.data);
-    // print(listSection);
 
     return listSection;
 

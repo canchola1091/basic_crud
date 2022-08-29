@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
       init: HomeController(),
       builder: (_) => Scaffold(
         appBar: AppBar(
+          backgroundColor: th.primaryColor,
           elevation: 0.0,
           title: const CustomText(
             fTxt: 'CRUD & API',

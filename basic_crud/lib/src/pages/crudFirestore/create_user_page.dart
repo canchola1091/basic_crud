@@ -30,6 +30,7 @@ class CreateUserPage extends StatelessWidget{
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
         child: Form(
+          key: _.gxFormKey,
           child: Column(
             children: [
               _inputName(_.gxNameCtrl),
