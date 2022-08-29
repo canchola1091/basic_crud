@@ -2,7 +2,7 @@
 import 'package:basic_crud/src/models/firestore/user_model.dart';
 import 'package:basic_crud/src/widgets/text/custom_text.dart';
 import 'package:flutter/material.dart';
-
+import 'package:basic_crud/src/theme/theme.dart' as th;
 
 class DetailUserPage extends StatelessWidget {
 
@@ -17,6 +17,7 @@ const DetailUserPage({
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: th.primaryColor,
         title: CustomText(
           fTxt: 'Información de ${user.name}',
           fSize: 17.0,
@@ -34,8 +35,8 @@ const DetailUserPage({
             _itemInfo( 'Edad', '${user.age} años' ),
             _itemInfo( 'Email', user.email ),
             _itemInfo( 'Teléfono', user.phone ),
-          ],
-        ),
+          ]
+        )
       )
     );
   }

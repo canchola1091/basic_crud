@@ -19,6 +19,7 @@ class UsersPage extends StatelessWidget {
       init: UsersController(),
       builder: (_) => Scaffold(
         appBar: AppBar(
+          backgroundColor: th.primaryColor,
           title: const CustomText(fTxt: 'Lista de usuarios', fSize: 17.0),
           centerTitle: true,
         ),

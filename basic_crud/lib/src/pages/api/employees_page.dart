@@ -54,7 +54,7 @@ class EmployeesPage extends StatelessWidget {
             child: ItemEmployee(
               employeesModel: _.gxEmployeedModel,
               index: index,
-            ),
+            )
           );
         }
       )
